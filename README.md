@@ -1,5 +1,5 @@
 # Didactic-lamp
-Project Tech Team epository van 2021 van:
+Project Tech Team repository 2021 van:
 - Marlene van Erp
 - Raekwon Gerold
 - Remco van Bruggen
@@ -9,9 +9,9 @@ Project Tech Team epository van 2021 van:
 1. 
 
 
-# matching app (in the works)
+# Petscout app (in the works)
 
-This app is made for CMD Blok Tech.
+Deze app is gemaakt voor CMD Blok Tech.
 
 
 # Installation
@@ -26,7 +26,7 @@ This app is made for CMD Blok Tech.
 You'll need to setup a `.env` file with these values:
 
 ```env
-(To be made)
+MONGO_CONN_STRING=mongodb+srv://Falicer:test@projecttech2021.ftuuw.mongodb.net/test
 ```
 The database might not work because you're not on a whitelisted IP, I'm looking for a localhost fix.
 
