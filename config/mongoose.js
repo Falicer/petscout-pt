@@ -10,7 +10,7 @@ const connectDBMongoose = async () => {
       useUnifiedTopology: true
     })
     // Connectie werkt!
-    console.log('connected to the database 👌🎶')
+    console.log('connected to the database')
   } catch (error) {
     // Connectie failed
     console.log(`ERROR needs a fix: ${error}`)

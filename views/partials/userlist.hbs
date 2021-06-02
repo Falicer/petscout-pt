@@ -1,0 +1,11 @@
+<ul class="people_list">
+  {{#if users }}
+    {{!-- {{#each user}}
+        <li><p>{{this.name}}</p></li>
+        <li><p>{{this.pet}}</p></li>
+    {{/each}} --}}
+    {{#each users as |users|}}
+      <li>{{users.name}} has a {{users.pet}}</li>
+    {{/each}}
+  {{/if}}
+</ul>
