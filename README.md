@@ -16,9 +16,9 @@ Deze app is gemaakt voor CMD Blok Tech.
 
 # Installation
 ```
-1. git clone https://github.com/Falicer/didactic-lamp.git
+1. git clone https://github.com/Falicer/petscout-pt.git
 
-2. cd didactic lamp
+2. cd petscout-pt
 
 3. npm install or npm i
 ```
