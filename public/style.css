@@ -53,7 +53,7 @@ left:25%;
 
 .centered h1 {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 2em;
 }
 
@@ -70,6 +70,10 @@ input {
 label {
   font-size: 1.3em;
   font-weight: bold;
+}
+
+select {
+  margin-top:.5em;
 }
 
 ::placeholder {
@@ -92,6 +96,10 @@ button {
   color: white;
   background-color: #7DC1A0;
   transition: box-shadow 200ms ease-in, background-color 200ms ease-in;
+}
+
+h4 {
+  margin-bottom:3em;
 }
 
 button:hover {
