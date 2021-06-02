@@ -1,0 +1,107 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Garamond, serif;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #111;
+  color: white;
+  text-align: center;
+}
+
+.left h1 {
+  font-size: 6em;
+}
+
+.right {
+  right: 0;
+  background-color: #8376ff;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+input {
+  border: none;
+  border-bottom: 3px solid rgb(0, 0, 0);
+  display: block;
+  margin-bottom: 2em;
+  background: transparent;
+}
+
+label {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.3;
+}
+
+select {
+  display: block;
+}
+
+button {
+  margin-top: 3em;
+  display: block;
+  background: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  border-width: 5px;
+  margin-bottom:1.5em;
+}
+
+button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+  cursor: pointer;
+}
+
+h3 {
+  font-weight: 10;
+}
+
+img {
+  margin-top: 10%;
+}
+
+/* bron:    split half html/css https://www.w3schools.com/howto/howto_css_split_screen.asp
+            https://stackoverflow.com/questions/47639947/basic-split-screen-with-css-html/47640051 
+            https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
