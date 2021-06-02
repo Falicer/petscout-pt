@@ -7,6 +7,7 @@
   font-family: Garamond, serif;
 }
 
+
 .split {
   height: 100%;
   width: 50%;
@@ -14,7 +15,17 @@
   z-index: 1;
   top: 0;
   overflow-x: hidden;
-  padding-top: 20px;
+}
+
+.logo {
+padding-top:3em;
+position: absolute;
+left:25%;
+}
+
+.banner {
+  width:100%;
+  height: auto;
 }
 
 .left {
@@ -30,7 +41,7 @@
 
 .right {
   right: 0;
-  background-color: #8376ff;
+  background-color: #ffffff;
 }
 
 .centered {
@@ -51,7 +62,9 @@ input {
   border-bottom: 3px solid rgb(0, 0, 0);
   display: block;
   margin-bottom: 2em;
-  background: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #F1F1F1;
+  padding: 0.5em;
 }
 
 label {
@@ -69,14 +82,16 @@ select {
 }
 
 button {
-  margin-top: 3em;
-  display: block;
-  background: white;
-  padding: 10px;
+  margin-top:2em;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  padding: 1.5em 3em;
   font-weight: bold;
-  border-radius: 6px;
-  border-width: 5px;
-  margin-bottom:1.5em;
+  font-size: 1em;
+  color: white;
+  background-color: #7DC1A0;
+  transition: box-shadow 200ms ease-in, background-color 200ms ease-in;
 }
 
 button:hover {
@@ -96,10 +111,6 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 
 h3 {
   font-weight: 10;
-}
-
-img {
-  margin-top: 10%;
 }
 
 /* bron:    split half html/css https://www.w3schools.com/howto/howto_css_split_screen.asp
