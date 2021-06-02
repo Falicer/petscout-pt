@@ -3,6 +3,7 @@ const router = express.Router()
 
 const mongoose = require('mongoose')
 
+// Renderen van main iirc
 router.get('/', (req, res) => {
   return res.render('main', 
   {

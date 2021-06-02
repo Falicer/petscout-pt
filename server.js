@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+// Maakt een port uit 3000 of het gegeven port van je host, vergeet niet je IP door te geven voor de database
 const PORT  = process.env.PORT || 3000
 const handlebars = require('express-handlebars')
 
@@ -27,6 +28,7 @@ connectDBMongoose()
 const routes =  require('./router/router.js')
 app.use('/', routes)
 
+// Luisteren of localhost actief is
 app.listen(PORT, () => {
   console.log(`Hammering at http://localhost:${PORT}`)
 })
