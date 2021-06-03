@@ -1,4 +1,4 @@
-# Didactic-lamp
+# Petscout-pt
 Project Tech Team repository 2021 van:
 - Marlene van Erp
 - Raekwon Gerold
@@ -30,6 +30,12 @@ MONGO_CONN_STRING=mongodb+srv://Falicer:test@projecttech2021.ftuuw.mongodb.net/t
 ```
 The database might not work because you're not on a whitelisted IP, I'm looking for a localhost fix.
 
+## Topics
+Marlene van Erp | Raekwon Gerold | Remco van Bruggen
+------------ | ------------- | -------------
+[To be filled]() | [To be filled]() | [To be filled]()
+(optional) | (optional) | (optional)
+
 ## Packages
 Packages planned to be used for the project.
 * body-parser
@@ -40,9 +46,13 @@ Packages planned to be used for the project.
 * eslint
 * nodemon
 
+For a more detailed list use this link: [Npm packages](https://github.com/Falicer/petscout-pt/wiki/NPM-Packages)
+
 ## Extensions (optional to use, I would recommend it!)
+[Recommended extensions](https://github.com/Falicer/petscout-pt/wiki/Extensions)
 
 # Static homepage
+[Deployed site](https://project-tech-petscout.herokuapp.com/)
 
 # License
 MIT
