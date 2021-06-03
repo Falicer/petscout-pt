@@ -1,5 +1,6 @@
 # Petscout-pt
 Project Tech Team repository 2021 van:
+- Cesar van Hardeveld
 - Marlene van Erp
 - Raekwon Gerold
 - Remco van Bruggen
@@ -31,10 +32,10 @@ MONGO_CONN_STRING=mongodb+srv://Falicer:test@projecttech2021.ftuuw.mongodb.net/t
 The database might not work because you're not on a whitelisted IP, I'm looking for a localhost fix.
 
 ## Topics
-Marlene van Erp | Raekwon Gerold | Remco van Bruggen
------------- | ------------- | -------------
-[To be filled]() | [To be filled]() | [To be filled]()
-(optional) | (optional) | (optional)
+Cesar van Hardeveld |Marlene van Erp | Raekwon Gerold | Remco van Bruggen
+------------ | ------------ | ------------- | -------------
+[To be filled]() | [To be filled]() | [To be filled]() | [To be filled]()
+(optional) | (optional) | (optional) | (optional)
 
 ## Packages
 Packages planned to be used for the project.
