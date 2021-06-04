@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const user = require('../schema/user.schema')
 
 
 // Opslaan van de user in de database
@@ -31,7 +32,7 @@ const getUsers = async () => {
 // Data haal je asynchroon (async await) op anders krijg je een promise terug
 router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
-  console.log(await getUsers())
+  // console.log(await getUsers())
   
   return res.render('testlijst', {
     title: 'userlist',
@@ -40,12 +41,11 @@ router.get('/listUsers', async (req, res) => {
   })
 })
 
-
 // Registreren van user
 router.post('/saveUser', (req, res) => {
 
   // Maak een user variable aan met het model.
-  let newUser = new User({
+  const newUser = new User({
     name: req.body.name, 
     password: req.body.password, 
     pet: req.body.petChoice
@@ -64,5 +64,27 @@ router.post('/saveUser', (req, res) => {
   // Redirect naar listUsers pagina.
   return res.redirect('/listUsers')
 })
+
+//hond filter
+const findUsers = async () => {
+  const data = await User.find({pet: 'kat'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op hond
+router.get('/matches', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches', {
+    users: await findUsers()
+  })
+})
+
 
 module.exports = router

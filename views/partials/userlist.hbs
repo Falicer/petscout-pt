@@ -1,8 +1,7 @@
 <ul class="people_list">
-  {{#if users }}
     {{!-- Oproepen van data voor de user list met pet --}}
-    {{#each users as |users|}}
-      <li>{{users.name}} has a {{users.pet}}</li>
+    {{#each users}}
+        <li>{{this.name}} has a {{this.pet}}</li>
     {{/each}}
-  {{/if}}
 </ul>
+<a href="/matches">Find your match!</a>
