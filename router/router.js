@@ -48,7 +48,8 @@ router.post('/saveUser', (req, res) => {
   let newUser = new User({
     name: req.body.name, 
     password: req.body.password, 
-    pet: req.body.petChoice
+    pet: req.body.petChoice,
+    acces: "user"
   })
   // Sla het op, check als er een error is en return deze indien geval is.
   newUser.save((err) => {
