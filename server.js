@@ -25,6 +25,20 @@ app.engine('hbs', handlebars({
 }))
 
 
+// Socket.io stuff
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+
+  socket.on('chat message', (msg) => {
+    // Onderste regel was je vergeten. Het liefst wil je ook een username meegeven en an zou je het versturen via een object en die uitlezen op client
+    io.emit('chat message', msg);
+    console.log('message: ' + msg);
+  });
+});
+
 // Maak een verbinding met mongodb via mongoose
 const connectDBMongoose = require('./config/mongoose')
 connectDBMongoose()
@@ -34,17 +48,6 @@ const routes =  require('./router/router.js')
 app.use('/', routes)
 
 // Luisteren of localhost actief is
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Hammering at http://localhost:${PORT}`)
 })
-
-// Socket.io stuff
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-  });
-});
