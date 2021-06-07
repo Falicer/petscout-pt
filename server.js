@@ -11,6 +11,11 @@ app.set('views', 'views')
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true}))
 
+//Including socket.io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+
 // Set custom templating engine
 app.engine('hbs', handlebars({
      layoutsDir: `${__dirname}/views/layout`,
@@ -32,3 +37,14 @@ app.use('/', routes)
 app.listen(PORT, () => {
   console.log(`Hammering at http://localhost:${PORT}`)
 })
+
+// Socket.io stuff
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+});

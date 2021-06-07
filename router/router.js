@@ -2,10 +2,6 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 
-//Including socket.io
-const http = require('http').Server(express);
-const io = require('socket.io')(http);
-
 // Opslaan van de user in de database
 const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
@@ -70,15 +66,5 @@ router.post('/saveUser', (req, res) => {
 })
 
 
-// Socket.io stuff
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-  });
-});
 
 module.exports = router
