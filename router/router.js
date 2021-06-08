@@ -67,7 +67,7 @@ router.post('/saveUser', (req, res) => {
 
 //hond filter
 const findUsers = async () => {
-  const data = await User.find({pet: 'kat'}, (error, data) => {
+  const data = await User.find({pet: 'hond'}, (error, data) => {
     if(error){
       console.log(error)
     }else{
