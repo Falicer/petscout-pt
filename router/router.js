@@ -65,17 +65,7 @@ router.post('/saveUser', (req, res) => {
   return res.redirect('/listUsers')
 })
 
-//hond filter
-const findUsers = async () => {
-  const data = await User.find({pet: 'hond'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
+
 
 //Filter op hond
 router.get('/matches', async (req, res) => {
@@ -86,5 +76,16 @@ router.get('/matches', async (req, res) => {
   })
 })
 
+//hond filter
+const findUsers = async (req, res) => {
+  const data = await User.find({pet: 'kat'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
 
 module.exports = router
