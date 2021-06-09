@@ -11,7 +11,7 @@ const User = mongoose.model('users', userSchema)
 router.get('/', (req, res) => {
   return res.render('index', 
   {
-    title: 'Hmmm, does this work?',
+    title: 'Main test page',
     layout: 'index'
   })
 })
@@ -33,7 +33,7 @@ router.get('/listUsers', async (req, res) => {
   console.log(await getUsers())
   
   return res.render('testlijst', {
-    title: 'userlist',
+    title: 'Petscout Users',
     layout: 'index',
     users: await getUsers()
   })
