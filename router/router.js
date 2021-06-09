@@ -39,6 +39,23 @@ router.get('/listUsers', async (req, res) => {
   })
 })
 
+// Aanmaken chatInlog pagina
+router.get('/chatInlog', async (req, res) => {
+  
+  return res.render('chatInlog', {
+    title: 'Petscout chatInlog',
+    layout: 'index',  
+  })
+})
+
+// Aanmaken chatRooms pagina
+router.get('/chatRooms', async (req, res) => {
+  
+  return res.render('chatRooms', {
+    title: 'Petscout chatRooms',
+    layout: 'index',  
+  })
+})
 
 // Registreren van user
 router.post('/saveUser', (req, res) => {
@@ -65,6 +82,17 @@ router.post('/saveUser', (req, res) => {
   return res.redirect('/listUsers')
 })
 
+// Redirect naar chatInlog pagina
+router.get('/toChat', (req, res) => {
+  return res.redirect('/chatInlog')
+})
+
+// Redirect naar chatRooms
+router.post('/tochatroom', (req, res) => {
+  
+
+  return res.redirect('/chatRooms')
+})
 
 
 module.exports = router

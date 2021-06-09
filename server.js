@@ -15,6 +15,14 @@ app.use(express.urlencoded({ extended: true}))
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+// Messaging & User format
+const formatMessage = require('./config/messages');
+const {
+  userJoin,
+  getCurrentUser,
+  userLeave,
+  getRoomUsers
+} = require('./config/users');
 
 // Set custom templating engine
 app.engine('hbs', handlebars({
@@ -24,6 +32,9 @@ app.engine('hbs', handlebars({
      partialsDir: `${__dirname}/views/partials`
 }))
 
+// Messaging room stuff
+// Server message bot
+const botName = 'Petscout Alice';
 
 // Socket.io stuff
 io.on('connection', (socket) => {
@@ -37,6 +48,8 @@ io.on('connection', (socket) => {
     io.emit('chat message', msg);
     console.log('message: ' + msg);
   });
+
+  
 });
 
 // Maak een verbinding met mongodb via mongoose
