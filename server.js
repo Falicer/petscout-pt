@@ -15,15 +15,6 @@ app.use(express.urlencoded({ extended: true}))
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-// Messaging & User format
-const formatMessage = require('./config/messages');
-const {
-  userJoin,
-  getCurrentUser,
-  userLeave,
-  getRoomUsers
-} = require('./config/users');
-
 // Set custom templating engine
 app.engine('hbs', handlebars({
      layoutsDir: `${__dirname}/views/layout`,
@@ -32,24 +23,10 @@ app.engine('hbs', handlebars({
      partialsDir: `${__dirname}/views/partials`
 }))
 
-// Messaging room stuff
-// Server message bot
-const botName = 'Petscout Alice';
-
-// Socket.io stuff
+// Socket.io setup, imports events module and use those in io.on
+const events = require('./modules/ioEvents');
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-
-  socket.on('chat message', (msg) => {
-    // Onderste regel was je vergeten. Het liefst wil je ook een username meegeven en an zou je het versturen via een object en die uitlezen op client
-    io.emit('chat message', msg);
-    console.log('message: ' + msg);
-  });
-
-  
+  events.ioEvents(socket, io);
 });
 
 // Maak een verbinding met mongodb via mongoose

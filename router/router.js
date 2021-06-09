@@ -1,11 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const expressPrettier = require('express-prettier')
 
 // Opslaan van de user in de database
 const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
 
+router.use(
+  expressPrettier(
+    { 
+      alwaysOn: true
+    }
+  )
+)
 
 // Renderen van main iirc
 router.get('/', (req, res) => {
@@ -41,7 +49,6 @@ router.get('/listUsers', async (req, res) => {
 
 // Aanmaken chatInlog pagina
 router.get('/chatInlog', async (req, res) => {
-  
   return res.render('chatInlog', {
     title: 'Petscout chatInlog',
     layout: 'index',  
@@ -62,7 +69,8 @@ router.post('/saveUser', (req, res) => {
 
   // Maak een user variable aan met het model.
   let newUser = new User({
-    name: req.body.name, 
+    username: req.body.username,
+    email: req.body.name, 
     password: req.body.password, 
     pet: req.body.petChoice,
     acces: "user"
@@ -87,11 +95,12 @@ router.get('/toChat', (req, res) => {
   return res.redirect('/chatInlog')
 })
 
-// Redirect naar chatRooms
+// Redirect naar chatRooms geeft username mee
 router.post('/tochatroom', (req, res) => {
+  console.log(req.body)
   
 
-  return res.redirect('/chatRooms')
+  return res.redirect(`/chatRooms?username=${req.body.username}&room=${req.body.room}`)
 })
 
 

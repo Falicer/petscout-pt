@@ -1,40 +1,14 @@
-const socket = io();
-// Chatbar from testpage consts
-const messages = document.getElementById('messages');
-const chatBar = document.getElementById('chatBar');
-const chatInput = document.getElementById('chatInput');
-// Chat room consts
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
-console.log('chat page')
-
-// Chatpage stuff
-// Listening if send has been pressed on test message bar
-chatBar.addEventListener('submit', function(e) {
-e.preventDefault();
-if (chatInput.value) {
-  socket.emit('chat message', chatInput.value);
-  chatInput.value = '';
-}
-});
-
-// Listening to messages send
-socket.on('chat message', function(msg) {
-  console.log(msg)
-  var item = document.createElement('li');
-  item.textContent = msg;
-  messages.appendChild(item);
-  window.scrollTo(0, document.body.scrollHeight);
-});
-
-// Message room stuff
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
+
+const socket = io();
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
@@ -91,12 +65,12 @@ function outputMessage(message) {
   document.querySelector('.chat-messages').appendChild(div);
 }
 
-// Add room name to html/hbs
+// Add room name to DOM
 function outputRoomName(room) {
   roomName.innerText = room;
 }
 
-// Add users to html/hbs
+// Add users to DOM
 function outputUsers(users) {
   userList.innerHTML = '';
   users.forEach((user) => {
@@ -106,11 +80,11 @@ function outputUsers(users) {
   });
 }
 
-// We all know that annoying prompt when leaving something, here it is
+//Prompt the user before leave chat room
 document.getElementById('leave-btn').addEventListener('click', () => {
   const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
   if (leaveRoom) {
-    window.location = '../index.html';
+    window.location = '../chatInlog';
   } else {
   }
 });
