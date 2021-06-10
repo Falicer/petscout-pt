@@ -51,7 +51,8 @@ router.get('/listUsers', async (req, res) => {
 router.get('/chatInlog', async (req, res) => {
   return res.render('chatInlog', {
     title: 'Petscout chatInlog',
-    layout: 'index',  
+    layout: 'index',
+    css: 'chatroom.css',  
   })
 })
 
@@ -60,7 +61,8 @@ router.get('/chatRooms', async (req, res) => {
   
   return res.render('chatRooms', {
     title: 'Petscout chatRooms',
-    layout: 'index',  
+    layout: 'index',
+    css: 'chatroom.css',  
   })
 })
 
