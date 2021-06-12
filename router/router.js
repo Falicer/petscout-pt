@@ -50,10 +50,10 @@ router.get('/listUsers', async (req, res) => {
 // Registreren van user
 router.post('/saveUser', (req, res) => {
 
-    //Maak een nieuwe temp afbeelding voor de user
+  // Maak een image aan voor de user
     fetch('https://source.unsplash.com/random')
     .then(res => {
-        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + '.png');
+        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + 'userimage.png');
         res.body.pipe(dest);
     });
 
