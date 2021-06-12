@@ -8,17 +8,14 @@ const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
 
 router.use(
-  expressPrettier(
-    { 
-      alwaysOn: true
-    }
-  )
+  expressPrettier({
+    alwaysOn: true
+  })
 )
 
 // Renderen van main iirc
 router.get('/', (req, res) => {
-  return res.render('index', 
-  {
+  return res.render('index', {
     title: 'Main test page',
     layout: 'index'
   })
@@ -39,7 +36,8 @@ const getUsers = async () => {
 router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   console.log(await getUsers())
-  
+
+
   return res.render('testlijst', {
     title: 'Petscout Users',
     layout: 'index',
@@ -52,17 +50,17 @@ router.get('/chatInlog', async (req, res) => {
   return res.render('chatInlog', {
     title: 'Petscout chatInlog',
     layout: 'index',
-    css: 'chatroom.css',  
+    css: 'chatroom.css',
   })
 })
 
 // Aanmaken chatRooms pagina
 router.get('/chatRooms', async (req, res) => {
-  
+
   return res.render('chatRooms', {
     title: 'Petscout chatRooms',
     layout: 'index',
-    css: 'chatroom.css',  
+    css: 'chatroom.css',
   })
 })
 
@@ -72,15 +70,15 @@ router.post('/saveUser', (req, res) => {
   // Maak een user variable aan met het model.
   let newUser = new User({
     username: req.body.username,
-    email: req.body.name, 
-    password: req.body.password, 
+    email: req.body.name,
+    password: req.body.password,
     pet: req.body.petChoice,
     acces: "user"
   })
   // Sla het op, check als er een error is en return deze indien geval is.
   newUser.save((err) => {
     console.log(`saved ${newUser}`)
-    if(err) return handleError(err)
+    if (err) return handleError(err)
   })
 
   // return res.render('testlijst', { //stuurt je naar een andere pagina, nvm ben dom
@@ -92,6 +90,16 @@ router.post('/saveUser', (req, res) => {
   return res.redirect('/listUsers')
 })
 
+// Updated User
+router.post('/updateUser:id', (req, res) => {
+  var userID = req.params.id
+
+  User.findByIdAndUpdate(req.body.id, {pet: req.body.petChoice}, function(err, result){
+      
+  })
+  return res.redirect('/listUsers')
+})
+
 // Redirect naar chatInlog pagina
 router.get('/toChat', (req, res) => {
   return res.redirect('/chatInlog')
@@ -100,7 +108,7 @@ router.get('/toChat', (req, res) => {
 // Redirect naar chatRooms geeft username mee
 router.post('/tochatroom', (req, res) => {
   console.log(req.body)
-  
+
 
   return res.redirect(`/chatRooms?username=${req.body.username}&room=${req.body.room}`)
 })
