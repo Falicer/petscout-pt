@@ -1,8 +1,14 @@
-<ul class="people_list">
     {{!-- Oproepen van data voor de user list met pet --}}
+<section class="userlist">
     {{#each users}}
-        <li>{{this.name}} has a {{this.pet}}</li>
-        <li><img src="./images/animals/{{this.name}}.png" alt=""></li>
+        <article>
+            <section class="text">
+                {{this.name}} has a {{this.pet}}
+            </section>
+            <section class="img">
+                <img src="./images/animals/{{this.name}}.png" alt="">
+            </section>
+        </article>
     {{/each}}
-</ul>
+</section>
 <a href="/matches">Find your match!</a>

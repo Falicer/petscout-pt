@@ -1,0 +1,22 @@
+body nav {
+    width: 20%;
+    margin: 0 auto;
+}
+
+body section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body section article {
+    display: flex;
+    width: 50%;
+}
+
+body section article section {
+    width: 50%;
+}
+
+body section article section img {
+    width: 100%;
+}

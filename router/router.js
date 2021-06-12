@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
   return res.render('index', 
   {
     title: 'Hmmm, does this work?',
-    layout: 'index'
+    layout: 'index',
+    css:'form.css'
   })
 })
 
@@ -38,9 +39,10 @@ router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
   
-  return res.render('testlijst', {
+  return res.render('logged-in', {
     title: 'userlist',
     layout: 'index',
+    css:'home.css',
     users: await getUsers()
   })
 })

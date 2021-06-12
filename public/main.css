@@ -4,58 +4,22 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Garamond, serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 
-.logo {
-padding-top:3em;
-position: absolute;
-left:25%;
-}
-
-.banner {
-  width:100%;
-  height: auto;
-}
-
-.left {
-  left: 0;
-  background-color: #111;
-  color: white;
-  text-align: center;
-}
-
-.left h1 {
-  font-size: 6em;
-}
-
-.right {
-  right: 0;
-  background-color: #ffffff;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.centered h1 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  font-size: 2em;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 input {
   border: none;
@@ -98,10 +62,6 @@ button {
   transition: box-shadow 200ms ease-in, background-color 200ms ease-in;
 }
 
-h4 {
-  margin-bottom:3em;
-}
-
 button:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -117,10 +77,18 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
   cursor: pointer;
 }
 
-h3 {
-  font-weight: 10;
+h1 {
+
 }
 
-/* bron:    split half html/css https://www.w3schools.com/howto/howto_css_split_screen.asp
-            https://stackoverflow.com/questions/47639947/basic-split-screen-with-css-html/47640051 
-            https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
