@@ -90,5 +90,7 @@ h3 {
 }
 
 h4 {
-
+    display: block;
+    margin: 0 auto;
+    color: white;
 }

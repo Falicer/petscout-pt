@@ -53,7 +53,7 @@ router.post('/saveUser', (req, res) => {
     //Maak een nieuwe temp afbeelding voor de user
     fetch('https://source.unsplash.com/random')
     .then(res => {
-        const dest = fs.createWriteStream('./public/images/animals/' + req.body.name + '.png');
+        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + '.png');
         res.body.pipe(dest);
     });
 

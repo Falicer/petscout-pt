@@ -1,14 +1,15 @@
     {{!-- Oproepen van data voor de user list met pet --}}
-<section class="userlist">
-    {{#each users}}
-        <article>
-            <section class="text">
-                {{this.name}} has a {{this.pet}}
-            </section>
-            <section class="img">
-                <img src="./images/animals/{{this.name}}.png" alt="">
-            </section>
-        </article>
-    {{/each}}
-</section>
-<a href="/matches">Find your match!</a>
+<main>
+    <section class="userlist">
+        {{#each users}}
+            <article style="background-image: url('./images/animals/{{this._id}}.png');">
+                <section class="text">
+                    <h4>{{this.name}} has a {{this.pet}}</h4>
+                </section>
+            </article>
+        {{/each}}
+    </section>
+    <section class="match">
+    <a href="/matches" class="findMatch">Find your match!</a>
+    </section
+</main>
