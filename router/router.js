@@ -105,14 +105,23 @@ router.get('/toPetCrud', (req, res) => {
   return res.redirect('/petEdit')
 })
 
-// Updating user pet
-router.post('/updateUser:id', (req, res) => {
-  var userID = req.params.id
-
-  User.findByIdAndUpdate(req.body.id, {pet: req.body.petChoice}, function(err, result){
+// Updating user
+router.post('/userCrud:id', (req, res) => {
+  const buttonChoice = req.body.crud
+  
+  if(buttonChoice == "update"){ 
+    User.findByIdAndUpdate(req.body.id, {pet: req.body.petChoice}, function(err, result){
+        
+    })
+    return res.redirect('/petEdit')
+  }else if(buttonChoice == "delete"){
+    User.findByIdAndDelete(req.body.id, req.body, function(err, result){
       
-  })
-  return res.redirect('/petEdit')
+    })
+    return res.redirect('/petEdit')
+  }else{
+
+  }
 })
 
 // Redirect naar chatInlog pagina

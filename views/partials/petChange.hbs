@@ -3,7 +3,7 @@
   {{!-- Oproepen van data voor de user list met pet --}}
   {{#each users as |users|}}
   <li>
-    <form action="/updateUser:{{users._id}}" method="post" name="userCRUD">
+    <form action="/userCrud:{{users._id}}" method="post" name="userEdit">
       <fieldset>
         <legend>Changing User</legend>
         <label for="petChoice">Change your pet</label>
@@ -16,7 +16,8 @@
           <option value="hamster">Hamster</option>
         </select>
 
-        <button type="submit">Update User</button>
+        <button type="submit" name="crud" value="update">Update User</button>
+        <button type="submit" name="crud" value="delete">Delete User</button>
 
         <p>{{users.name}} has a {{users.pet}}</p>
       </fieldset>
