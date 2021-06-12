@@ -45,6 +45,16 @@ router.get('/listUsers', async (req, res) => {
   })
 })
 
+// Aanmaken pet Edit pagina
+router.get('/petEdit', async (req, res) => {
+  return res.render('petCrud', {
+    title: 'Petscout pet Edit',
+    layout: 'index',
+    css: 'petChange.css',
+    users: await getUsers()
+  })
+})
+
 // Aanmaken chatInlog pagina
 router.get('/chatInlog', async (req, res) => {
   return res.render('chatInlog', {
@@ -90,14 +100,19 @@ router.post('/saveUser', (req, res) => {
   return res.redirect('/listUsers')
 })
 
-// Updated User
+// Redirect to petCrud page
+router.get('/toPetCrud', (req, res) => {
+  return res.redirect('/petEdit')
+})
+
+// Updating user pet
 router.post('/updateUser:id', (req, res) => {
   var userID = req.params.id
 
   User.findByIdAndUpdate(req.body.id, {pet: req.body.petChoice}, function(err, result){
       
   })
-  return res.redirect('/listUsers')
+  return res.redirect('/petEdit')
 })
 
 // Redirect naar chatInlog pagina
