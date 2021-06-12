@@ -29,16 +29,6 @@ const routes =  require('./router/router.js')
 const user = require('./schema/user.schema')
 app.use('/', routes)
 
-//NodeFetch()
-const fetch = require('node-fetch')
-const fs = require('fs')
-
-fetch('https://dog.ceo/api/breeds/image/random')
-    .then(res => {
-        const dest = fs.createWriteStream('./public/images/animals/random');
-        res.body.pipe(dest);
-    });
-
 
 // Luisteren of localhost actief is
 app.listen(PORT, () => {

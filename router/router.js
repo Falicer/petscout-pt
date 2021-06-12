@@ -8,6 +8,10 @@ const user = require('../schema/user.schema')
 const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
 
+  //NodeFetch()
+const fetch = require('node-fetch')
+const fs = require('fs')
+
 
 // Renderen van main iirc
 router.get('/', (req, res) => {
@@ -43,6 +47,13 @@ router.get('/listUsers', async (req, res) => {
 
 // Registreren van user
 router.post('/saveUser', (req, res) => {
+
+    //Maak een nieuwe temp afbeelding voor de user
+    fetch('https://source.unsplash.com/random')
+    .then(res => {
+        const dest = fs.createWriteStream('./public/images/animals/' + req.body.name + '.png');
+        res.body.pipe(dest);
+    });
 
   // Maak een user variable aan met het model.
   const newUser = new User({

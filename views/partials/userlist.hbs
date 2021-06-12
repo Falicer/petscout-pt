@@ -2,6 +2,7 @@
     {{!-- Oproepen van data voor de user list met pet --}}
     {{#each users}}
         <li>{{this.name}} has a {{this.pet}}</li>
+        <li><img src="./images/animals/{{this.name}}.png" alt=""></li>
     {{/each}}
 </ul>
 <a href="/matches">Find your match!</a>
