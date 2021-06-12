@@ -112,18 +112,20 @@ router.post('/toUserList', (req, res) => {
 // Updating user
 router.post('/userCrud:id', (req, res) => {
   const buttonChoice = req.body.crud
-  
-  if(buttonChoice == "update"){ 
-    User.findByIdAndUpdate(req.body.id, {pet: req.body.petChoice}, function(err, result){
-        
+
+  if (buttonChoice == "update") {
+    User.findByIdAndUpdate(req.body.id, {
+      pet: req.body.petChoice
+    }, function (err, result) {
+
     })
     return res.redirect('/petEdit')
-  }else if(buttonChoice == "delete"){
-    User.findByIdAndDelete(req.body.id, req.body, function(err, result){
-      
+  } else if (buttonChoice == "delete") {
+    User.findByIdAndDelete(req.body.id, req.body, function (err, result) {
+
     })
     return res.redirect('/petEdit')
-  }else{
+  } else {
 
   }
 })

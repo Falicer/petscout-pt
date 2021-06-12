@@ -9,8 +9,11 @@ const botName = 'Petscout Alice';
 
 
 exports.ioEvents = (socket, io) => {
-  
-  socket.on('joinRoom', ({ username, room }) => {
+
+  socket.on('joinRoom', ({
+    username,
+    room
+  }) => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
