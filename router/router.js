@@ -105,6 +105,10 @@ router.get('/toPetCrud', (req, res) => {
   return res.redirect('/petEdit')
 })
 
+router.post('/toUserList', (req, res) => {
+  return res.redirect('/listUsers')
+})
+
 // Updating user
 router.post('/userCrud:id', (req, res) => {
   const buttonChoice = req.body.crud

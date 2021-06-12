@@ -1,3 +1,7 @@
+<form action="/toUserList" method="post">
+  <button type="submit" id="backButton">back</button>
+</form>
+
 <ul class="people_list">
   {{#if users }}
   {{!-- Oproepen van data voor de user list met pet --}}
@@ -16,8 +20,8 @@
           <option value="hamster">Hamster</option>
         </select>
 
-        <button type="submit" name="crud" value="update">Update User</button>
-        <button type="submit" name="crud" value="delete">Delete User</button>
+        <button type="submit" name="crud" value="update" id="updateButton">Update User</button>
+        <button type="submit" name="crud" value="delete" id="deleteButton">Delete User</button>
 
         <p>{{users.name}} has a {{users.pet}}</p>
       </fieldset>
