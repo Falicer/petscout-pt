@@ -1,3 +1,4 @@
+
     {{!-- Oproepen van data voor de user list met pet --}}
 <main>
     <section class="userlist">
@@ -11,5 +12,12 @@
     </section>
     <section class="match">
     <a href="/matches" class="findMatch">Find your match!</a>
-    </section
+    </section>
+    <form action="/toPetCrud" method="GET">
+        <button type="submit" id="crudButton">petCrud</button>
+    </form>
+    </br>
+    <form action="/toChat" method="GET">
+        <button type="submit" id="chatroomButton">Chatrooms</button>
+    </form>
 </main>
