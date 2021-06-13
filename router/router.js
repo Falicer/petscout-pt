@@ -103,7 +103,6 @@ router.post('/saveUser', (req, res) => {
   // Sla het op, check als er een error is en return deze indien geval is.
   newUser.save((err) => {
     console.log(`saved ${newUser}`)
-    if (err) return handleError(err)
   })
 
   // return res.render('testlijst', { //stuurt je naar een andere pagina, nvm ben dom
