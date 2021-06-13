@@ -29,9 +29,8 @@ const routes =  require('./router/router.js')
 const user = require('./schema/user.schema')
 app.use('/', routes)
 
+
 // Luisteren of localhost actief is
 app.listen(PORT, () => {
   console.log(`Hammering at http://localhost:${PORT}`)
 })
-
-//Vind match

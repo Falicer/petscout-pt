@@ -8,13 +8,18 @@ const user = require('../schema/user.schema')
 const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
 
+  //NodeFetch()
+const fetch = require('node-fetch')
+const fs = require('fs')
+
 
 // Renderen van main iirc
 router.get('/', (req, res) => {
   return res.render('index', 
   {
     title: 'Hmmm, does this work?',
-    layout: 'index'
+    layout: 'index',
+    css:'form.css'
   })
 })
 
@@ -34,15 +39,23 @@ router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
   
-  return res.render('testlijst', {
+  return res.render('logged-in', {
     title: 'userlist',
     layout: 'index',
+    css:'home.css',
     users: await getUsers()
   })
 })
 
 // Registreren van user
 router.post('/saveUser', (req, res) => {
+
+  // Maak een image aan voor de user
+    fetch('https://source.unsplash.com/random')
+    .then(res => {
+        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + 'userimage.png');
+        res.body.pipe(dest);
+    });
 
   // Maak een user variable aan met het model.
   const newUser = new User({
@@ -78,7 +91,7 @@ router.get('/matches', async (req, res) => {
 
 //hond filter
 const findUsers = async (req, res) => {
-  const data = await User.find({pet: 'kat'}, (error, data) => {
+  const data = await User.find({pet: 'Bunny'}, (error, data) => {
     if(error){
       console.log(error)
     }else{
