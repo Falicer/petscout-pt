@@ -36,7 +36,7 @@ nav a img {
 article:nth-of-type(1) {
   overflow: hidden;
   background-color: #F47CC7;
-  background-image: url("./images/foto banner.jpeg");
+  background-image: url("/images/foto_banner.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

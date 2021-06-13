@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const expressPrettier = require('express-prettier')
+//added a delay
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 // Opslaan van de user in de database
 const userSchema = require('../schema/user.schema')
@@ -25,7 +27,8 @@ router.get('/', (req, res) => {
   {
     title: 'Petscout home',
     layout: 'index',
-    css:'form.css'
+    css1: 'styles/main.css',
+    css2:'styles/form.css'
   })
 })
 
@@ -44,11 +47,13 @@ const getUsers = async () => {
 router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
-  
+  await delay(500);
+
   return res.render('logged-in', {
     title: 'Petscout',
     layout: 'index',
-    css:'home.css',
+    css1: 'styles/main.css',
+    css2:'styles/home.css',
     users: await getUsers()
   })
 })
@@ -58,7 +63,7 @@ router.get('/petEdit', async (req, res) => {
   return res.render('petCrud', {
     title: 'Petscout pet Edit',
     layout: 'index',
-    css: 'petChange.css',
+    css1: 'styles/petChange.css',
     users: await getUsers()
   })
 })
@@ -68,7 +73,8 @@ router.get('/chatInlog', async (req, res) => {
   return res.render('chatInlog', {
     title: 'Petscout chatInlog',
     layout: 'index',
-    css: 'chatroom.css',
+    css1: 'styles/chatroom.css',
+    css2: ''
   })
 })
 
@@ -78,7 +84,8 @@ router.get('/chatRooms', async (req, res) => {
   return res.render('chatRooms', {
     title: 'Petscout chatRooms',
     layout: 'index',
-    css: 'chatroom.css',
+    css1: 'styles/chatroom.css',
+    css2: ''
   })
 })
 
@@ -95,7 +102,7 @@ router.post('/saveUser', (req, res) => {
   // Maak een user variable aan met het model.
   let newUser = new User({
     username: req.body.username,
-    email: req.body.name,
+    email: req.body.email,
     password: req.body.password,
     pet: req.body.petChoice,
     acces: "user"
@@ -103,14 +110,9 @@ router.post('/saveUser', (req, res) => {
   // Sla het op, check als er een error is en return deze indien geval is.
   newUser.save((err) => {
     console.log(`saved ${newUser}`)
-    if (err) return handleError(err)
+    if(err) return console.log(err)
   })
-
-  // return res.render('testlijst', { //stuurt je naar een andere pagina, nvm ben dom
-  //   title: 'Hmmm, does this work?',
-  //   layout: 'index'
-  // })
-
+  
   // Redirect naar listUsers pagina.
   return res.redirect('/listUsers')
 })
@@ -122,7 +124,8 @@ router.get('/matches', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
   return res.render('matches', {
-    users: await findUsers()
+    users: await findUsers(),
+    css1: 'styles/main.css'
   })
 })
 
