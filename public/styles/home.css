@@ -1,7 +1,6 @@
-body nav {
-    width: 20%;
-    margin: 0 auto;
-}
+body main {
+    margin: 0px 20px;
+  }
 
 body main section {
     display: flex;

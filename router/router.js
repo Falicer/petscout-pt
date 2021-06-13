@@ -118,20 +118,22 @@ router.post('/saveUser', (req, res) => {
 })
 
 
-
-//Filter op hond
-router.get('/matches', async (req, res) => {
+//FILTERS/////////////////////////////////////////////////////
+//Filter op dog pagina
+router.get('/matches-dog', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
-  return res.render('matches', {
-    users: await findUsers(),
-    css1: 'styles/main.css'
+  return res.render('matches-dog', {
+    users: await findUsersDog(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2:'styles/home.css'
   })
 })
 
-//hond filter
-const findUsers = async (req, res) => {
-  const data = await User.find({pet: 'Bunny'}, (error, data) => {
+//dog filter
+const findUsersDog = async (req, res) => {
+  const data = await User.find({pet: 'dog'}, (error, data) => {
     if(error){
       console.log(error)
     }else{
@@ -141,6 +143,102 @@ const findUsers = async (req, res) => {
   return data
 }
 
+//Filter op cat pagina
+router.get('/matches-cat', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-cat', {
+    users: await findUsersCat(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2:'styles/home.css'
+  })
+})
+
+//cat filter
+const findUsersCat = async (req, res) => {
+  const data = await User.find({pet: 'cat'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bird pagina
+router.get('/matches-bird', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-bird', {
+    users: await findUsersBird(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2:'styles/home.css'
+  })
+})
+
+//cat filter
+const findUsersBird = async (req, res) => {
+  const data = await User.find({pet: 'bird'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bunny pagina
+router.get('/matches-bunny', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-bunny', {
+    users: await findUsersBunny(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2:'styles/home.css'
+  })
+})
+
+//bunny filter
+const findUsersBunny = async (req, res) => {
+  const data = await User.find({pet: 'bunny'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bunny pagina
+router.get('/matches-hamster', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-hamster', {
+    users: await findUsersHamster(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2:'styles/home.css'
+  })
+})
+
+//bunny filter
+const findUsersHamster = async (req, res) => {
+  const data = await User.find({pet: 'hamster'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+//ENDFILTERS/////////////////////////////////////////////////////
 // Redirect to petCrud page
 router.get('/toPetCrud', (req, res) => {
   return res.redirect('/petEdit')
