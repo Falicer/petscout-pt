@@ -1,22 +1,30 @@
-{{!--  Registratie form --}}
-<form action="/saveUser" method="post" name="userData">
-  <fieldset>
-    <legend>Add A User</legend>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" required>
-    <label for="name">Email</label>
-    <input type="email" name="name" id="name" required>
-    <label for="password">your peepee</label>
-    <input type="password" name="password" id="password" minlength="5" required>
-    <label for="petChoice">Pick your pet:</label>
-    <input id="petChoice" name="petChoice" list="petFlavors" />
-    <datalist id="petFlavors">
-      <option value="dog">
-      <option value="cat">
-      <option value="bird">
-      <option value="bunny">
-      <option value="hamster">
-    </datalist>
-    <button type="submit">Registreer</button>
-  </fieldset>
-</form>
+{{!-- Registratie form --}}
+<main>
+  <article>
+  </article>
+  <article>
+    <nav>
+      <a href="/"><img src="./images/logo-petscout.svg" alt=""></a>
+    </nav>
+    <section class="login">
+      <form action="/saveUser" method="post" name="userData">
+        <fieldset>
+          <legend>Create account</legend>
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required>
+          <label for="password">password</label>
+          <input type="password" name="password" id="password" minlength="5" required>
+          <label for="petChoice">Pick your pet:</label>
+            <select id="petChoice" name="petChoice" list="petFlavors">
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="bird">Bird</option>
+              <option value="bunny">Bunny</option>
+              <option value="hamster">Hamster</option>
+            </select>
+          <button type="submit">Registreer</button>
+        </fieldset>
+      </form>
+    </section>
+  </article>
+</main>

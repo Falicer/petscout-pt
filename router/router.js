@@ -7,17 +7,25 @@ const expressPrettier = require('express-prettier')
 const userSchema = require('../schema/user.schema')
 const User = mongoose.model('users', userSchema)
 
+// Prettier always active, looks nice
 router.use(
   expressPrettier({
     alwaysOn: true
   })
 )
 
+  //NodeFetch()
+const fetch = require('node-fetch')
+const fs = require('fs')
+
+
 // Renderen van main iirc
 router.get('/', (req, res) => {
-  return res.render('index', {
-    title: 'Main test page',
-    layout: 'index'
+  return res.render('index', 
+  {
+    title: 'Petscout home',
+    layout: 'index',
+    css:'form.css'
   })
 })
 
@@ -35,12 +43,12 @@ const getUsers = async () => {
 // Data haal je asynchroon (async await) op anders krijg je een promise terug
 router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
-  console.log(await getUsers())
-
-
-  return res.render('testlijst', {
-    title: 'Petscout Users',
+  // console.log(await getUsers())
+  
+  return res.render('logged-in', {
+    title: 'Petscout',
     layout: 'index',
+    css:'home.css',
     users: await getUsers()
   })
 })
@@ -77,6 +85,13 @@ router.get('/chatRooms', async (req, res) => {
 // Registreren van user
 router.post('/saveUser', (req, res) => {
 
+  // Maak een image aan voor de user
+    fetch('https://source.unsplash.com/random')
+    .then(res => {
+        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + 'userimage.png');
+        res.body.pipe(dest);
+    });
+
   // Maak een user variable aan met het model.
   let newUser = new User({
     username: req.body.username,
@@ -99,6 +114,29 @@ router.post('/saveUser', (req, res) => {
   // Redirect naar listUsers pagina.
   return res.redirect('/listUsers')
 })
+
+
+
+//Filter op hond
+router.get('/matches', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches', {
+    users: await findUsers()
+  })
+})
+
+//hond filter
+const findUsers = async (req, res) => {
+  const data = await User.find({pet: 'Bunny'}, (error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
 
 // Redirect to petCrud page
 router.get('/toPetCrud', (req, res) => {

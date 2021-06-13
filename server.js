@@ -39,6 +39,7 @@ connectDBMongoose()
 const routes = require('./router/router.js')
 app.use('/', routes)
 
+
 // Luisteren of localhost actief is
 http.listen(PORT, () => {
   console.log(`Hammering at http://localhost:${PORT}`)

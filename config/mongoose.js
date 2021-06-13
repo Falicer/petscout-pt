@@ -15,7 +15,7 @@ const connectDBMongoose = async () => {
     // Connectie failed
     console.log(`ERROR needs a fix: ${error}`)
     throw error
-  }
+  } 
 }
 
 module.exports = connectDBMongoose
