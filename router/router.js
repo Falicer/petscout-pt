@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
   {
     title: 'Petscout home',
     layout: 'index',
-    css:'form.css'
+    css1: 'styles/main.css',
+    css2:'styles/form.css'
   })
 })
 
@@ -48,7 +49,8 @@ router.get('/listUsers', async (req, res) => {
   return res.render('logged-in', {
     title: 'Petscout',
     layout: 'index',
-    css:'home.css',
+    css1: 'styles/main.css',
+    css2:'styles/home.css',
     users: await getUsers()
   })
 })
@@ -58,7 +60,7 @@ router.get('/petEdit', async (req, res) => {
   return res.render('petCrud', {
     title: 'Petscout pet Edit',
     layout: 'index',
-    css: 'petChange.css',
+    css1: 'styles/petChange.css',
     users: await getUsers()
   })
 })
@@ -68,7 +70,8 @@ router.get('/chatInlog', async (req, res) => {
   return res.render('chatInlog', {
     title: 'Petscout chatInlog',
     layout: 'index',
-    css: 'chatroom.css',
+    css1: 'styles/chatroom.css',
+    css2: ''
   })
 })
 
@@ -78,7 +81,8 @@ router.get('/chatRooms', async (req, res) => {
   return res.render('chatRooms', {
     title: 'Petscout chatRooms',
     layout: 'index',
-    css: 'chatroom.css',
+    css1: 'styles/chatroom.css',
+    css2: ''
   })
 })
 
@@ -122,7 +126,8 @@ router.get('/matches', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
   return res.render('matches', {
-    users: await findUsers()
+    users: await findUsers(),
+    css1: 'styles/main.css'
   })
 })
 
