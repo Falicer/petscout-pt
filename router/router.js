@@ -91,7 +91,7 @@ router.get('/matches', async (req, res) => {
 
 //hond filter
 const findUsers = async (req, res) => {
-  const data = await User.find({Pet: 'Bunny'}, (error, data) => {
+  const data = await User.find({pet: 'Bunny'}, (error, data) => {
     if(error){
       console.log(error)
     }else{
