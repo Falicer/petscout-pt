@@ -15,22 +15,7 @@ main {
 }
 
 nav {
-display: none;
-}
-
-article nav {
-  display: block;
-  width: 100%;
-}
-
-article nav a {
-  width: 50%;
-  margin: 0 auto;
-  display: block;
-}
-
-nav a img {
-  width: 100%;
+  position: absolute;
 }
 
 article:nth-of-type(1) {
