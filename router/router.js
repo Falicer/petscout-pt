@@ -95,7 +95,7 @@ router.post('/saveUser', (req, res) => {
   // Maak een user variable aan met het model.
   let newUser = new User({
     username: req.body.username,
-    email: req.body.name,
+    email: req.body.email,
     password: req.body.password,
     pet: req.body.petChoice,
     acces: "user"
@@ -103,6 +103,7 @@ router.post('/saveUser', (req, res) => {
   // Sla het op, check als er een error is en return deze indien geval is.
   newUser.save((err) => {
     console.log(`saved ${newUser}`)
+    if(err) return console.log(err)
   })
 
   // return res.render('testlijst', { //stuurt je naar een andere pagina, nvm ben dom
