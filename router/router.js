@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const expressPrettier = require('express-prettier')
+//added a delay
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 // Opslaan van de user in de database
 const userSchema = require('../schema/user.schema')
@@ -45,7 +47,8 @@ const getUsers = async () => {
 router.get('/listUsers', async (req, res) => {
   // Await getUsers() omdat je anders een promise terug krijgt.
   // console.log(await getUsers())
-  
+  await delay(500);
+
   return res.render('logged-in', {
     title: 'Petscout',
     layout: 'index',
@@ -109,12 +112,7 @@ router.post('/saveUser', (req, res) => {
     console.log(`saved ${newUser}`)
     if(err) return console.log(err)
   })
-
-  // return res.render('testlijst', { //stuurt je naar een andere pagina, nvm ben dom
-  //   title: 'Hmmm, does this work?',
-  //   layout: 'index'
-  // })
-
+  
   // Redirect naar listUsers pagina.
   return res.redirect('/listUsers')
 })
