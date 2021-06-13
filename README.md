@@ -34,7 +34,7 @@ The database might not work because you're not on a whitelisted IP, I'm looking 
 ## Topics
 Cesar van Hardeveld |Marlene van Erp | Raekwon Gerold | Remco van Bruggen
 ------------ | ------------ | ------------- | -------------
-[To be filled]() | [To be filled]() | [To be filled]() | [To be filled]()
+[To be filled]() | [To be filled]() | [Implement real-time data with socket.io]() | [Implement user authentication with passport.js]()
 (optional) | (optional) | (optional) | (optional)
 
 ## Packages
