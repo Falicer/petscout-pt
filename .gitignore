@@ -5,3 +5,5 @@
 /dist
 
 .DS_store
+
+/public/.DS_store
