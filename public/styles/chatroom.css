@@ -111,7 +111,7 @@ a {
 	color: #777;
 }
 
-.chat-messages .message .meta #messageTime{
+.chat-messages .message .meta #messageTime {
 	float: right;
 }
 
@@ -181,6 +181,10 @@ a {
 .join-main .btn {
 	margin-top: 20px;
 	width: 100%;
+}
+
+#petscoutLogo{
+	width: 100px;
 }
 
 @media (max-width: 700px) {

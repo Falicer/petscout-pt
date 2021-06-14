@@ -1,13 +1,13 @@
 {{!-- Navigatie bar --}}
 <main>
-<h2>These are your hamster owning matches!</h2>
-<section class="userlist">
-    {{#each users}}
-        <article style="background-image: url('./images/animals/{{this._id}}userimage.png');">
-            <section class="text">
-                <h4>{{this.username}} has a {{this.pet}}</h4>
-            </section>
-        </article>
-    {{/each}}
-</section>
+    <h2>These are your hamster owning matches!</h2>
+    <section class="userlist">
+        {{#each users}}
+            <article style="background-image: url('./images/animals/{{this._id}}userimage.png');">
+                <section class="text">
+                    <h4>{{this.username}} has a {{this.pet}}</h4>
+                </section>
+            </article>
+        {{/each}}
+    </section>
 </main>

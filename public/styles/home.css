@@ -1,6 +1,6 @@
 body main {
     margin: 0px 20px;
-  }
+}
 
 body main section {
     display: flex;
@@ -16,8 +16,8 @@ body main section article {
     margin: 2%;
     height: 50vh;
     background-position: center;
-    -webkit-box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.41); 
-    box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.41);
+    -webkit-box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.41);
 }
 
 body main section article section {
@@ -25,7 +25,7 @@ body main section article section {
     text-align: center;
     display: flex;
     align-items: center;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, .3);
     border-radius: 30px;
 }
 
@@ -42,5 +42,3 @@ body main .match .findMatch {
     color: antiquewhite;
     text-decoration: none;
 }
-
-
