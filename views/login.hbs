@@ -24,25 +24,20 @@
     
         <div class="centered">
 
-        <h1>Registreren</h1>
-        <h4>Heeft u al een account? <a href="">Login</a> </h4>
+        <h1>Login</h1>
 
         <form action="/login" method="POST">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Type your password" required>
+            <input type="email" id="email" name="email" placeholder="Type your email" required>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Type your password" required>
 
-            <label for="age">Huisdier</label>
-            <select>
-                <option value="Hond">Hond</option>
-                <option value="Kat">Kat</option>
-                <option value="Vis">Vis</option>
-                <option value="Anders">Anders</option>
-            </select>
+            <a class="register" href="/register">Register</a>
 
-            <button type="submit">Registreren</button>
+            <button type="submit">Login</button>
+
+            
         </form>
         
         </div>
