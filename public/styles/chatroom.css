@@ -183,6 +183,10 @@ a {
 	width: 100%;
 }
 
+#petscoutLogo{
+	width: 100px;
+}
+
 @media (max-width: 700px) {
 	.chat-main {
 		display: block;
