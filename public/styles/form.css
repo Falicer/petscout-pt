@@ -1,4 +1,3 @@
-
 /* bron:    split half html/css https://www.w3schools.com/howto/howto_css_split_screen.asp
             https://stackoverflow.com/questions/47639947/basic-split-screen-with-css-html/47640051 
             https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
@@ -9,6 +8,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 main {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -27,7 +27,7 @@ article:nth-of-type(1) {
   background-position: center;
 }
 
-article:nth-of-type(1) > img:nth-of-type(1) {
+article:nth-of-type(1)>img:nth-of-type(1) {
   width: 100%;
   max-height: 100vh;
   object-fit: fill;
@@ -61,7 +61,8 @@ legend {
   padding-bottom: 1em;
 }
 
-label, input{
+label,
+input {
   color: #414141;
   width: 100%;
   display: block;
@@ -92,7 +93,7 @@ input:focus {
 }
 
 form a {
-  text-decoration:none;
+  text-decoration: none;
   color: #4299FF;
   float: right;
 }
@@ -110,12 +111,12 @@ button {
   transition: box-shadow 200ms ease-in, background-color 200ms ease-in;
 }
 
-button:focus, button:hover {
+button:focus,
+button:hover {
   background-color: #649B80;
   box-shadow: 5px 5px 0 0 #F57FCA;
 }
 
-button:active{
+button:active {
   box-shadow: inset -5px -5px 0px 0px #f150b6
-  
 }

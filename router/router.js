@@ -16,19 +16,18 @@ router.use(
   })
 )
 
-  //NodeFetch()
+//NodeFetch()
 const fetch = require('node-fetch')
 const fs = require('fs')
 
 
 // Renderen van main iirc
 router.get('/', (req, res) => {
-  return res.render('index', 
-  {
+  return res.render('index', {
     title: 'Petscout home',
     layout: 'index',
     css1: 'styles/main.css',
-    css2:'styles/form.css'
+    css2: 'styles/form.css'
   })
 })
 
@@ -53,7 +52,7 @@ router.get('/listUsers', async (req, res) => {
     title: 'Petscout',
     layout: 'index',
     css1: 'styles/main.css',
-    css2:'styles/home.css',
+    css2: 'styles/home.css',
     users: await getUsers()
   })
 })
@@ -66,186 +65,6 @@ router.get('/petEdit', async (req, res) => {
     css1: 'styles/petChange.css',
     users: await getUsers()
   })
-})
-
-// Aanmaken chatInlog pagina
-router.get('/chatInlog', async (req, res) => {
-  return res.render('chatInlog', {
-    title: 'Petscout chatInlog',
-    layout: 'index',
-    css1: 'styles/chatroom.css',
-    css2: ''
-  })
-})
-
-// Aanmaken chatRooms pagina
-router.get('/chatRooms', async (req, res) => {
-
-  return res.render('chatRooms', {
-    title: 'Petscout chatRooms',
-    layout: 'index',
-    css1: 'styles/chatroom.css',
-    css2: ''
-  })
-})
-
-// Registreren van user
-router.post('/saveUser', (req, res) => {
-
-  // Maak een image aan voor de user
-    fetch('https://source.unsplash.com/random')
-    .then(res => {
-        const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + 'userimage.png');
-        res.body.pipe(dest);
-    });
-
-  // Maak een user variable aan met het model.
-  let newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    pet: req.body.petChoice,
-    acces: "user"
-  })
-  // Sla het op, check als er een error is en return deze indien geval is.
-  newUser.save((err) => {
-    console.log(`saved ${newUser}`)
-    if(err) return console.log(err)
-  })
-  
-  // Redirect naar listUsers pagina.
-  return res.redirect('/listUsers')
-})
-
-
-//FILTERS/////////////////////////////////////////////////////
-//Filter op dog pagina
-router.get('/matches-dog', async (req, res) => {
-  // Await getUsers() omdat je anders een promise terug krijgt.
-  // console.log(await getUsers())
-  return res.render('matches-dog', {
-    users: await findUsersDog(),
-    layout: 'index',
-    css1: 'styles/main.css',
-    css2:'styles/home.css'
-  })
-})
-
-//dog filter
-const findUsersDog = async (req, res) => {
-  const data = await User.find({pet: 'dog'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
-
-//Filter op cat pagina
-router.get('/matches-cat', async (req, res) => {
-  // Await getUsers() omdat je anders een promise terug krijgt.
-  // console.log(await getUsers())
-  return res.render('matches-cat', {
-    users: await findUsersCat(),
-    layout: 'index',
-    css1: 'styles/main.css',
-    css2:'styles/home.css'
-  })
-})
-
-//cat filter
-const findUsersCat = async (req, res) => {
-  const data = await User.find({pet: 'cat'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
-
-//Filter op bird pagina
-router.get('/matches-bird', async (req, res) => {
-  // Await getUsers() omdat je anders een promise terug krijgt.
-  // console.log(await getUsers())
-  return res.render('matches-bird', {
-    users: await findUsersBird(),
-    layout: 'index',
-    css1: 'styles/main.css',
-    css2:'styles/home.css'
-  })
-})
-
-//cat filter
-const findUsersBird = async (req, res) => {
-  const data = await User.find({pet: 'bird'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
-
-//Filter op bunny pagina
-router.get('/matches-bunny', async (req, res) => {
-  // Await getUsers() omdat je anders een promise terug krijgt.
-  // console.log(await getUsers())
-  return res.render('matches-bunny', {
-    users: await findUsersBunny(),
-    layout: 'index',
-    css1: 'styles/main.css',
-    css2:'styles/home.css'
-  })
-})
-
-//bunny filter
-const findUsersBunny = async (req, res) => {
-  const data = await User.find({pet: 'bunny'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
-
-//Filter op bunny pagina
-router.get('/matches-hamster', async (req, res) => {
-  // Await getUsers() omdat je anders een promise terug krijgt.
-  // console.log(await getUsers())
-  return res.render('matches-hamster', {
-    users: await findUsersHamster(),
-    layout: 'index',
-    css1: 'styles/main.css',
-    css2:'styles/home.css'
-  })
-})
-
-//bunny filter
-const findUsersHamster = async (req, res) => {
-  const data = await User.find({pet: 'hamster'}, (error, data) => {
-    if(error){
-      console.log(error)
-    }else{
-      console.log(data)
-    }
-  }).lean()
-  return data
-}
-//ENDFILTERS/////////////////////////////////////////////////////
-// Redirect to petCrud page
-router.get('/toPetCrud', (req, res) => {
-  return res.redirect('/petEdit')
-})
-
-router.post('/toUserList', (req, res) => {
-  return res.redirect('/listUsers')
 })
 
 // Updating user
@@ -269,6 +88,27 @@ router.post('/userCrud:id', (req, res) => {
   }
 })
 
+// Aanmaken chatInlog pagina
+router.get('/chatInlog', async (req, res) => {
+  return res.render('chatInlog', {
+    title: 'Petscout chatInlog',
+    layout: 'index',
+    css1: 'styles/chatroom.css',
+    css2: ''
+  })
+})
+
+// Aanmaken chatRooms pagina
+router.get('/chatRooms', async (req, res) => {
+
+  return res.render('chatRooms', {
+    title: 'Petscout chatRooms',
+    layout: 'index',
+    css1: 'styles/chatroom.css',
+    css2: ''
+  })
+})
+
 // Redirect naar chatInlog pagina
 router.get('/toChat', (req, res) => {
   return res.redirect('/chatInlog')
@@ -282,5 +122,174 @@ router.post('/tochatroom', (req, res) => {
   return res.redirect(`/chatRooms?username=${req.body.username}&room=${req.body.room}`)
 })
 
+
+// Registreren van user
+router.post('/saveUser', (req, res) => {
+
+  // Maak een image aan voor de user
+  fetch('https://source.unsplash.com/random')
+    .then(res => {
+      const dest = fs.createWriteStream('./public/images/animals/' + newUser._id + 'userimage.png');
+      res.body.pipe(dest);
+    });
+
+  // Maak een user variable aan met het model.
+  let newUser = new User({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    pet: req.body.petChoice,
+    acces: "user"
+  })
+  // Sla het op, check als er een error is en return deze indien geval is.
+  newUser.save((err) => {
+    console.log(`saved ${newUser}`)
+    if (err) return console.log(err)
+  })
+
+  // Redirect naar listUsers pagina.
+  return res.redirect('/listUsers')
+})
+
+
+//FILTERS/////////////////////////////////////////////////////
+//Filter op dog pagina
+router.get('/matches-dog', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-dog', {
+    users: await findUsersDog(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2: 'styles/home.css'
+  })
+})
+
+//dog filter
+const findUsersDog = async (req, res) => {
+  const data = await User.find({
+    pet: 'dog'
+  }, (error, data) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op cat pagina
+router.get('/matches-cat', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-cat', {
+    users: await findUsersCat(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2: 'styles/home.css'
+  })
+})
+
+//cat filter
+const findUsersCat = async (req, res) => {
+  const data = await User.find({
+    pet: 'cat'
+  }, (error, data) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bird pagina
+router.get('/matches-bird', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-bird', {
+    users: await findUsersBird(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2: 'styles/home.css'
+  })
+})
+
+//cat filter
+const findUsersBird = async (req, res) => {
+  const data = await User.find({
+    pet: 'bird'
+  }, (error, data) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bunny pagina
+router.get('/matches-bunny', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-bunny', {
+    users: await findUsersBunny(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2: 'styles/home.css'
+  })
+})
+
+//bunny filter
+const findUsersBunny = async (req, res) => {
+  const data = await User.find({
+    pet: 'bunny'
+  }, (error, data) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+
+//Filter op bunny pagina
+router.get('/matches-hamster', async (req, res) => {
+  // Await getUsers() omdat je anders een promise terug krijgt.
+  // console.log(await getUsers())
+  return res.render('matches-hamster', {
+    users: await findUsersHamster(),
+    layout: 'index',
+    css1: 'styles/main.css',
+    css2: 'styles/home.css'
+  })
+})
+
+//bunny filter
+const findUsersHamster = async (req, res) => {
+  const data = await User.find({
+    pet: 'hamster'
+  }, (error, data) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(data)
+    }
+  }).lean()
+  return data
+}
+//ENDFILTERS/////////////////////////////////////////////////////
+// Redirect to petCrud page
+router.get('/toPetCrud', (req, res) => {
+  return res.redirect('/petEdit')
+})
+
+router.post('/toUserList', (req, res) => {
+  return res.redirect('/listUsers')
+})
 
 module.exports = router

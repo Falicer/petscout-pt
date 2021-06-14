@@ -8,15 +8,16 @@
 }
 
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-    src: local('Material Icons'),
-      local('MaterialIcons-Regular'),
-      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -37,7 +38,7 @@ label {
 }
 
 select {
-  margin-top:.5em;
+  margin-top: .5em;
 }
 
 ::placeholder {
@@ -50,7 +51,7 @@ select {
 }
 
 button {
-  margin-top:2em;
+  margin-top: 2em;
   cursor: pointer;
   width: 100%;
   border: none;
@@ -73,7 +74,13 @@ button:focus {
   outline: none;
 }
 
-a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+a[href],
+input[type='submit'],
+input[type='image'],
+label[for],
+select,
+button,
+.pointer {
   cursor: pointer;
 }
 
@@ -90,12 +97,12 @@ h3 {
 }
 
 h4 {
-    display: block;
-    margin: 0 auto;
-    color: white;
+  display: block;
+  margin: 0 auto;
+  color: white;
 }
 
-.crudID{
+.crudID {
   display: none !important;
 }
 
