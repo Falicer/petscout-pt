@@ -52,4 +52,4 @@ For our deployed site, please refer to the following link:
 [Deployed site](https://project-tech-petscout.herokuapp.com/)
 
 # License
-MIT
+[MIT](https://github.com/Falicer/petscout-pt/blob/main/LICENSE)
