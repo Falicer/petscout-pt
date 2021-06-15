@@ -1,5 +1,4 @@
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -19,7 +18,6 @@ mongoose.connect(db, { useNewUrlParser: true })
     .catch(err => console.log(err));
 
 //EJS
-app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 app.use(express.static('static')) 
@@ -45,13 +43,6 @@ app.use(passport.session());
 
 // Connect flash
 app.use(flash());
-
-// // Global Variabels
-// app.use((req, res, next) => {
-//     res.locals.success_msg = req.flash('success_msg');
-//     res.locals.error_msg = req.flash('error_msg');
-//     next();
-// });
 
 // // Global Variabels
 app.use((req, res, next) => {
