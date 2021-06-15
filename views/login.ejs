@@ -1,34 +1,61 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body">
-        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
-        <%- include ('./partials/messages'); %>
-        <form action="/users/login" method="POST">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-control"
-              placeholder="Enter Email"
-            />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              class="form-control"
-              placeholder="Enter Password"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </form>
-        <p class="lead mt-4">
-          No Account? <a href="/users/register">Register</a>
-        </p>
-      </div>
+  <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Matching App</title>
+        <meta name="Matching App" content="Matching site">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+<body>
+     <header>
+
+    </header>
+
+    <div class="split left">
+      <img class="logo" src="./images/logo petscout.png">
+        <img class="banner" src="../images/foto banner .jpeg">
     </div>
-  </div>
+
+    <div class="split right">
+
+    
+        <div class="centered">
+
+        <h1>Login</h1>
+
+        <%- include ('./partials/messages'); %>
+
+        <form action="/users/login" method="POST">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+          />
+
+          No account? <a href="/users/register">Register</a>
+
+            <button type="submit">Login</button>
+        </form>
+        
+        </div>
+
+    </div>
+
+        
+</body>
+</html>

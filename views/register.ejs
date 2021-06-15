@@ -1,12 +1,34 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body">
-      <h1 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Register
-      </h1>
-      <%- include ('partials/messages') %>
-      <form action="/users/register" method="POST">
-        <div class="form-group">
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Matching App</title>
+        <meta name="Matching App" content="Matching site">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+<body>
+     <header>
+
+    </header>
+
+    <div class="split left">
+      <img class="logo" src="./images/logo petscout.png">
+        <img class="banner" src="../images/foto banner .jpeg">
+    </div>
+
+    <div class="split right">
+
+    
+        <div class="centered">
+
+        <h1>Registreren</h1>
+        <%- include ('partials/messages') %>
+        <h4>Heeft u al een account? <a href="/users/login">Login</a> </h4>
+
+        <form action="/users/register" method="POST">
           <label for="name">Name</label>
           <input
             type="name"
@@ -16,8 +38,7 @@
             placeholder="Enter Name"
             value="<%= typeof name != 'undefined' ? name : '' %>"
           />
-        </div>
-        <div class="form-group">
+
           <label for="email">Email</label>
           <input
             type="email"
@@ -27,8 +48,7 @@
             placeholder="Enter Email"
             value="<%= typeof email != 'undefined' ? email : '' %>"
           />
-        </div>
-        <div class="form-group">
+
           <label for="password">Password</label>
           <input
             type="password"
@@ -38,8 +58,7 @@
             placeholder="Create Password"
             value="<%= typeof password != 'undefined' ? password : '' %>"
           />
-        </div>
-        <div class="form-group">
+
           <label for="password2">Confirm Password</label>
           <input
             type="password"
@@ -49,12 +68,23 @@
             placeholder="Confirm Password"
             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
           />
+
+            <!-- <label for="age">Huisdier</label>
+            <select>
+                <option value="Hond">Hond</option>
+                <option value="Kat">Kat</option>
+                <option value="Vis">Vis</option>
+                <option value="Anders">Anders</option>
+            </select> -->
+
+            <button type="submit">Registreren</button>
+            
+        </form>
+        
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
-          Register
-        </button>
-      </form>
-      <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+
     </div>
-  </div>
-</div>
+
+        
+</body>
+</html>

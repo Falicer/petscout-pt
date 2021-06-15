@@ -22,6 +22,11 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
+app.use(express.static('static')) 
+app.use('/css', express.static(__dirname + 'static/css'))
+app.use('/js', express.static(__dirname + 'static/js'))
+app.use('/img', express.static(__dirname + 'static/img'))
+
 // Bodyparser
 app.use(express.urlencoded({ extended: false}));
 
@@ -55,6 +60,8 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
+
+
 
 // Routes
 app.use('/', require('./routes/index'));
