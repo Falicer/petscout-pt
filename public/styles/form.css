@@ -1,0 +1,122 @@
+/* bron:    split half html/css https://www.w3schools.com/howto/howto_css_split_screen.asp
+            https://stackoverflow.com/questions/47639947/basic-split-screen-with-css-html/47640051 
+            https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+nav {
+  position: absolute;
+}
+
+article:nth-of-type(1) {
+  overflow: hidden;
+  background-color: #F47CC7;
+  background-image: url("/images/foto_banner.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+article:nth-of-type(1)>img:nth-of-type(1) {
+  width: 100%;
+  max-height: 100vh;
+  object-fit: fill;
+}
+
+article:nth-of-type(2) {
+  height: 100vh;
+  padding: 2em 2em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+article:nth-of-type(2) section {
+  width: 100%;
+}
+
+#logo {
+  position: absolute;
+}
+
+
+/* login */
+
+fieldset {
+  border: none;
+}
+
+legend {
+  font-size: 2em;
+  padding-bottom: 1em;
+}
+
+label,
+input {
+  color: #414141;
+  width: 100%;
+  display: block;
+}
+
+input {
+  margin-bottom: 1em;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #F1F1F1;
+  padding: 0.5em;
+}
+
+::placeholder {
+  color: #CDCDCD;
+}
+
+input label span:before {
+  font-family: 'Material Icons';
+  content: "gggg";
+  background-color: #ffcc00;
+  width: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px #7DC1A0 solid;
+}
+
+form a {
+  text-decoration: none;
+  color: #4299FF;
+  float: right;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 2em;
+  width: 100%;
+  border: none;
+  padding: 1.5em 3em;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  background-color: #7DC1A0;
+  transition: box-shadow 200ms ease-in, background-color 200ms ease-in;
+}
+
+button:focus,
+button:hover {
+  background-color: #649B80;
+  box-shadow: 5px 5px 0 0 #F57FCA;
+}
+
+button:active {
+  box-shadow: inset -5px -5px 0px 0px #f150b6
+}

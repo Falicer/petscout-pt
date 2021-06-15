@@ -1,8 +1,32 @@
-<ul class="people_list">
-  {{#if users }}
-    {{!-- Oproepen van data voor de user list met pet --}}
-    {{#each users as |users|}}
-      <li>{{users.name}} has a {{users.pet}}</li>
-    {{/each}}
-  {{/if}}
-</ul>
+{{!-- Oproepen van data voor de user list met pet --}}
+<main>
+    <section class="userlist">
+        {{#each users}}
+            <article style="background-image: url('./images/animals/{{this._id}}userimage.png');">
+                <section class="text">
+                    <h4>{{this.username}} has a {{this.pet}}</h4>
+                </section>
+            </article>
+        {{/each}}
+    </section>
+    <h2>Find people with a </h2>
+    <section class="match">
+        <a href="/matches-dog" class="findMatch">Dog</a>
+
+        <a href="/matches-cat" class="findMatch">Cat</a>
+
+        <a href="/matches-bird" class="findMatch">Bird</a>
+
+        <a href="/matches-bunny" class="findMatch">Bunny</a>
+
+        <a href="/matches-hamster" class="findMatch">Hamster</a>
+    </section>
+
+    <form action="/toPetCrud" method="GET">
+        <button type="submit" id="crudButton">petCrud</button>
+    </form>
+    </br>
+    <form action="/toChat" method="GET">
+        <button type="submit" id="chatroomButton">Chatrooms</button>
+    </form>
+</main>

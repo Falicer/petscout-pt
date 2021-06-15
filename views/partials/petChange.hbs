@@ -1,0 +1,32 @@
+<form action="/toUserList" method="post">
+  <button type="submit" id="backButton">back</button>
+</form>
+
+<ul class="people_list">
+  {{#if users }}
+  {{!-- Oproepen van data voor de user list met pet --}}
+    {{#each users as |users|}}
+      <li>
+        <form action="/userCrud:{{users._id}}" method="post" name="userEdit">
+          <fieldset>
+            <legend>Changing User</legend>
+            <label for="petChoice">Change your pet</label>
+            <input id="id" name="id" hidden value="{{users._id}}" class="crudID">
+            <select id="petChoice" name="petChoice" aria-placeholder="{{users.pet}}">
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="bird">Bird</option>
+              <option value="bunny">Bunny</option>
+              <option value="hamster">Hamster</option>
+            </select>
+
+            <button type="submit" name="crud" value="update" id="updateButton">Update User</button>
+            <button type="submit" name="crud" value="delete" id="deleteButton">Delete User</button>
+
+            <p>{{users.username}} has a {{users.pet}}</p>
+          </fieldset>
+        </form>
+      </li>
+    {{/each}}
+  {{/if}}
+</ul>

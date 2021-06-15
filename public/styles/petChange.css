@@ -1,0 +1,19 @@
+body nav {
+  width: 20%;
+  margin: 0 auto;
+}
+
+body nav a {
+  display: flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+body nav a img {
+  width: 30%;
+}
+
+body nav a h1 {
+  margin-left: 30px;
+}
