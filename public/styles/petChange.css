@@ -76,7 +76,7 @@ article {
 }
 
 #petChoice {
-  width: 16%;
+  width: fit-content;
   background: none;
   border: none;
   font-size: 25px;
