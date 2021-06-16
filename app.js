@@ -32,7 +32,7 @@ app.use(express.urlencoded({
 app.engine('hbs', handlebars({
   layoutsDir: `${__dirname}/views`,
   extname: 'hbs',
-  defaultLayout: 'welcome',
+  defaultLayout: '',
   partialsDir: `${__dirname}/views/partials`
 }))
 
