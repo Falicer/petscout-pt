@@ -12,7 +12,20 @@
 
     </header>
 
-        <h1>Hey <%= name %>, welcome back! </h1>
+        <h1>Hey, welcome back! </h1>
+
+        {{#if success_msg}}
+        {{success_msg}}
+        {{/if}}
+
+        {{#if error_msg}}
+        {{error_msg}}
+        {{/if}}
+
+        {{#if error}}
+        {{error}}
+        {{/if}}
+
         <h2>This is your account page. </h2>
         <a href="/users/logout"><button type="submit">Log Out</button></a>
     </div>
