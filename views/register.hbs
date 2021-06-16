@@ -25,7 +25,20 @@
         <div class="centered">
 
         <h1>Registreren</h1>
-        <%- include ('partials/messages') %>
+        
+        {{#if success_msg}}
+        {{success_msg}}
+        {{/if}}
+
+        {{#if error_msg}}
+        {{error_msg}}
+        {{/if}}
+
+        {{#if error}}
+        {{error}}
+        {{/if}}
+
+
         <h4>Heeft u al een account? <a href="/users/login">Login</a> </h4>
 
         <form action="/users/register" method="POST">
@@ -36,7 +49,6 @@
             name="name"
             class="form-control"
             placeholder="Enter Name"
-            value="<%= typeof name != 'undefined' ? name : '' %>"
           />
 
           <label for="email">Email</label>
@@ -46,7 +58,6 @@
             name="email"
             class="form-control"
             placeholder="Enter Email"
-            value="<%= typeof email != 'undefined' ? email : '' %>"
           />
 
           <label for="password">Password</label>
@@ -56,7 +67,6 @@
             name="password"
             class="form-control"
             placeholder="Create Password"
-            value="<%= typeof password != 'undefined' ? password : '' %>"
           />
 
           <label for="password2">Confirm Password</label>
@@ -66,17 +76,7 @@
             name="password2"
             class="form-control"
             placeholder="Confirm Password"
-            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
           />
-
-            <!-- <label for="age">Huisdier</label>
-            <select>
-                <option value="Hond">Hond</option>
-                <option value="Kat">Kat</option>
-                <option value="Vis">Vis</option>
-                <option value="Anders">Anders</option>
-            </select> -->
-
             <button type="submit">Registreren</button>
             
         </form>
