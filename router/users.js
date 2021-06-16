@@ -23,10 +23,6 @@ router.get('/register', (req, res) => {
     })
   })
 
-
-
-
-
 // Register Handle
 router.post('/register', (req, res) => {
    const { name, email, password, password2 } = req.body; 
