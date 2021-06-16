@@ -7,11 +7,25 @@ const passport = require('passport');
 // User model
 const User = require('../models/User')
 
-// Login Page
-router.get('/login', (req, res) => res.render('login'));
+// Login
+router.get('/login', (req, res) => {
+    return res.render('login', {
+      layout: 'login',
+      title: 'Petscout login',
+    })
+  })
 
 // Register
-router.get('/register', (req, res) => res.render('register'));
+router.get('/register', (req, res) => {
+    return res.render('register', {
+      layout: 'register',
+      title: 'Petscout register',
+    })
+  })
+
+
+
+
 
 // Register Handle
 router.post('/register', (req, res) => {

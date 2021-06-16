@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-
+const handlebars = require('express-handlebars')
 const app = express();
 
 //Passport config
@@ -17,13 +17,29 @@ mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
 
-//EJS
-app.set('view engine', 'ejs');
+// //EJS
+// app.set('view engine', 'ejs');
 
-app.use(express.static('static')) 
-app.use('/css', express.static(__dirname + 'static/css'))
-app.use('/js', express.static(__dirname + 'static/js'))
-app.use('/img', express.static(__dirname + 'static/img'))
+// Zet hbs als templating engine
+app.set('view engine', 'hbs')
+app.set('views', 'views')
+app.use(express.static(__dirname + '/public'))
+app.use(express.urlencoded({
+  extended: true
+}))
+
+// Set custom templating engine
+app.engine('hbs', handlebars({
+  layoutsDir: `${__dirname}/views`,
+  extname: 'hbs',
+  defaultLayout: 'welcome',
+  partialsDir: `${__dirname}/views/partials`
+}))
+
+app.use(express.static('public')) 
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/js'))
+app.use('/img', express.static(__dirname + 'public/img'))
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false}));
@@ -52,11 +68,9 @@ app.use((req, res, next) => {
     next();
 })
 
-
-
 // Routes
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
+app.use('/', require('./router/index'));
+app.use('/users', require('./router/users'));
 
 const PORT = process.env.PORT || 5000;
 
