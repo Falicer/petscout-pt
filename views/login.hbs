@@ -26,7 +26,17 @@
 
         <h1>Login</h1>
 
-        <%- include ('./partials/messages'); %>
+        {{#if success_msg}}
+        {{success_msg}}
+        {{/if}}
+
+        {{#if error_msg}}
+        {{error_msg}}
+        {{/if}}
+
+        {{#if error}}
+        {{error}}
+        {{/if}}
 
         <form action="/users/login" method="POST">
           <label for="email">Email</label>
@@ -35,7 +45,6 @@
             id="email"
             name="email"
             class="form-control"
-            placeholder="Enter Email"
           />
 
           <label for="password">Password</label>
@@ -44,7 +53,6 @@
             id="password"
             name="password"
             class="form-control"
-            placeholder="Enter Password"
           />
 
           No account? <a href="/users/register">Register</a>
