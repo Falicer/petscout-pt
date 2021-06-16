@@ -5,28 +5,27 @@
 <ul class="people_list">
   {{#if users }}
   {{!-- Oproepen van data voor de user list met pet --}}
-    {{#each users as |users|}}
-      <li>
-        <form action="/userCrud:{{users._id}}" method="post" name="userEdit">
-          <fieldset>
-            <legend>Changing User</legend>
-            <label for="petChoice">Change your pet</label>
-            <input id="id" name="id" hidden value="{{users._id}}" class="crudID">
-            <select id="petChoice" name="petChoice" aria-placeholder="{{users.pet}}">
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="bird">Bird</option>
-              <option value="bunny">Bunny</option>
-              <option value="hamster">Hamster</option>
-            </select>
+  {{#each users as |users|}}
+    <li class="crudListing">
+      <article style="background-image: url('./images/animals/{{this._id}}userimage.png');">
+        <form action="/userCrud:{{users._id}}" method="post" name="userEdit" class="crudForm">
+          <label for="petChoice" class="petLabel">Change your pet</label>
+          <input id="id" name="id" hidden value="{{users._id}}" class="crudID">
+          <select id="petChoice" name="petChoice" aria-placeholder="{{users.pet}}">
+            <option value="dog" class="choiceOption">Dog</option>
+            <option value="cat" class="choiceOption">Cat</option>
+            <option value="bird" class="choiceOption">Bird</option>
+            <option value="bunny" class="choiceOption">Bunny</option>
+            <option value="hamster" class="choiceOption">Hamster</option>
+          </select>
+          </br>
+          <button type="submit" name="crud" value="update" id="updateButton">Update User</button>
+          <button type="submit" name="crud" value="delete" id="deleteButton">Delete User</button>
 
-            <button type="submit" name="crud" value="update" id="updateButton">Update User</button>
-            <button type="submit" name="crud" value="delete" id="deleteButton">Delete User</button>
-
-            <p>{{users.username}} has a {{users.pet}}</p>
-          </fieldset>
+          <p class="userText">{{users.username}} has a {{users.pet}}</p>
         </form>
-      </li>
-    {{/each}}
+      </article>
+    </li>
+  {{/each}}
   {{/if}}
 </ul>
