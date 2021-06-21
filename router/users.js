@@ -25,7 +25,7 @@ router.get('/register', (req, res) => {
 
 // Register Handle
 router.post('/register', (req, res) => {
-   const { name, email, password, password2 } = req.body; 
+   const { name, email, password, password2 } = req.body;   //info gets taken from form  
    let errors = [];
 
    // Check required fields
@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
        errors.push({ msg: 'Password should be at least 6 characters' });
    }
 
-   if(errors.length > 0) {
+   if(errors.length > 0) {           // so credentials stay in form when you get an error
     res.render('register', {
         errors,
         name,
@@ -53,7 +53,7 @@ router.post('/register', (req, res) => {
     });
    } else {
        // Validation passed
-    User.findOne({ email: email})
+    User.findOne({ email: email})    // to find 1 user in the database and match the email
      .then(user => {
          if (user) {
              // User exists
@@ -65,16 +65,16 @@ router.post('/register', (req, res) => {
                 password,
                 password2
             });
-         } else {
+         } else {                   // new user made
             const newUser = new User({
                 name,
                 email,
                 password
             });
 
-            // Hash Password
+            // Hash Password to encrypt password so password isn't shown
             bcrypt.genSalt(10, (err, salt) =>
-             bcrypt.hash(newUser.password, salt, (err, hash) => {
+             bcrypt.hash(newUser.password, salt, (err, hash) => {       //takes password and salt, and gives hash back
                 if(err) throw err;
                 // Set password to hashed
                 newUser.password = hash;
@@ -84,7 +84,7 @@ router.post('/register', (req, res) => {
                      req.flash('success_msg', 'You are now registered and can log in!');
                      res.redirect('/users/login');
                  })
-                 .catch(err => console.log(err));
+                 .catch(err => console.log(err)); //give error if it doesn't work
 
             }))
          }
@@ -98,7 +98,7 @@ router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/users/login',
-        failureFlash: true
+        failureFlash: true //succes message
     })(req, res, next);
 });
 

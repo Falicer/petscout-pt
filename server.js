@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
@@ -9,16 +10,10 @@ const app = express();
 //Passport config
 require('./config/passport')(passport);
 
-// DB Config
-const db = require('./config/keys').MongoURI;
+  // Maak een verbinding met mongodb via mongoose
+const connectDBMongoose = require('./config/mongoose.js')
+connectDBMongoose()
 
-// Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true })
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
-
-// //EJS
-// app.set('view engine', 'ejs');
 
 // Zet hbs als templating engine
 app.set('view engine', 'hbs')
@@ -41,7 +36,7 @@ app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/img', express.static(__dirname + 'public/img'))
 
-// Bodyparser
+// Bodyparser (voor data van formulier met req.body)
 app.use(express.urlencoded({ extended: false}));
 
 // Express session
@@ -53,14 +48,14 @@ app.use(
     })
   );
 
-// Passport middleware
-app.use(passport.initialize());
+// Passport middleware / initializing the local strategy of passport
+app.use(passport.initialize()); 
 app.use(passport.session());
 
 // Connect flash
 app.use(flash());
 
-// // Global Variabels
+// // Global Variabels (for error messages)
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
@@ -72,6 +67,6 @@ app.use((req, res, next) => {
 app.use('/', require('./router/index'));
 app.use('/users', require('./router/users'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, console.log('Server started on port ${PORT}'));

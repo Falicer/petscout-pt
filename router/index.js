@@ -6,18 +6,12 @@ const { ensureAuthenticated } = require('../config/auth');
 router.get('/', (req, res) => res.render('welcome'));
 
 // Dasboard
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
+router.get('/dashboard', ensureAuthenticated, (req, res) => { //so you can only visit dashboard if logged in
     return res.render('dashboard', {
       layout: 'dashboard',
       title: 'Petscout my dasboard',
       name: req.user.name,
     })
   })
-
-// router.get('/dashboard', ensureAuthenticated, (req, res) => 
-// res.render('dashboard', {
-//     name: req.user.name
-// }));
-
 
 module.exports = router;
