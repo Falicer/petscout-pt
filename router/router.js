@@ -44,7 +44,7 @@ router.get('/listUsers', async (req, res) => {
     // console.log(await getUsers())
     await delay(500);
 
-    return res.render('logged-in', {
+    return res.render('loggedIn', {
         title: 'Petscout',
         layout: '',
         css1: 'styles/main.css',
@@ -150,10 +150,10 @@ router.post('/saveUser', (req, res) => {
 
 //FILTERS/////////////////////////////////////////////////////
 //Filter op dog pagina
-router.get('/matches-dog', async (req, res) => {
+router.get('/matchesDog', async (req, res) => {
     // Await getUsers() omdat je anders een promise terug krijgt.
     // console.log(await getUsers())
-    return res.render('matches-dog', {
+    return res.render('matchesDog', {
         users: await findUsersDog(),
         layout: '',
         css1: 'styles/main.css',
@@ -176,10 +176,10 @@ const findUsersDog = async (req, res) => {
 }
 
 //Filter op cat pagina
-router.get('/matches-cat', async (req, res) => {
+router.get('/matchesCat', async (req, res) => {
     // Await getUsers() omdat je anders een promise terug krijgt.
     // console.log(await getUsers())
-    return res.render('matches-cat', {
+    return res.render('matchesCat', {
         users: await findUsersCat(),
         layout: '',
         css1: 'styles/main.css',
@@ -202,10 +202,10 @@ const findUsersCat = async (req, res) => {
 }
 
 //Filter op bird pagina
-router.get('/matches-bird', async (req, res) => {
+router.get('/matchesBird', async (req, res) => {
     // Await getUsers() omdat je anders een promise terug krijgt.
     // console.log(await getUsers())
-    return res.render('matches-bird', {
+    return res.render('matchesBird', {
         users: await findUsersBird(),
         layout: '',
         css1: 'styles/main.css',
@@ -228,10 +228,10 @@ const findUsersBird = async (req, res) => {
 }
 
 //Filter op bunny pagina
-router.get('/matches-bunny', async (req, res) => {
+router.get('/matchesBunny', async (req, res) => {
     // Await getUsers() omdat je anders een promise terug krijgt.
     // console.log(await getUsers())
-    return res.render('matches-bunny', {
+    return res.render('matchesBunny', {
         users: await findUsersBunny(),
         layout: '',
         css1: 'styles/main.css',
@@ -254,10 +254,10 @@ const findUsersBunny = async (req, res) => {
 }
 
 //Filter op bunny pagina
-router.get('/matches-hamster', async (req, res) => {
+router.get('/matchesHamster', async (req, res) => {
     // Await getUsers() omdat je anders een promise terug krijgt.
     // console.log(await getUsers())
-    return res.render('matches-hamster', {
+    return res.render('matchesHamster', {
         users: await findUsersHamster(),
         layout: '',
         css1: 'styles/main.css',
@@ -350,7 +350,7 @@ router.post('/register', (req, res) => {
     }
 
     if (errors.length > 0) { // so credentials stay in form when you get an error
-        res.render('/register', {
+        res.render('register', {
             errors,
             username,
             email,
@@ -369,7 +369,7 @@ router.post('/register', (req, res) => {
                     errors.push({
                         msg: 'Email is already registered'
                     });
-                    res.render('/register', {
+                    res.render('register', {
                         errors,
                         username,
                         email,

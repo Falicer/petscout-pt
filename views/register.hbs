@@ -7,20 +7,20 @@
         <title>Matching App</title>
         <meta name="Matching App" content="Matching site">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/main.css">
     </head>
 <body>
      <header>
 
     </header>
 
-    <div class="split left">
-      <img class="logo" src="./images/logo petscout.png">
+    <div class="split left"> 
         <img class="banner" src="../images/foto banner .jpeg">
     </div>
 
     <div class="split right">
-
+{{>navigation}}
     
         <div class="centered">
 
@@ -45,7 +45,7 @@
         {{/if}}
 
 
-        <h4>Heeft u al een account? <a href="/login">Login</a> </h4>
+        <h5>Heeft u al een account? <a href="/login">Login</a> </h5>
 
         <form action="/register" method="POST">
           <label for="username">Name</label>
