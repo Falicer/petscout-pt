@@ -1,0 +1,69 @@
+  <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Matching App</title>
+        <meta name="Matching App" content="Matching site">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+<body>
+     <header>
+
+    </header>
+
+    <div class="split left">
+      <img class="logo" src="./images/logo petscout.png">
+        <img class="banner" src="../images/foto banner .jpeg">
+    </div>
+
+    <div class="split right">
+
+    
+        <div class="centered">
+
+        <h1>Login</h1>
+
+        {{#if success_msg}}
+        {{success_msg}}
+        {{/if}}
+
+        {{#if error_msg}}
+        {{error_msg}}
+        {{/if}}
+
+        {{#if error}}
+        {{error}}
+        {{/if}}
+
+        <form action="/users/login" method="POST">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+          />
+
+          No account? <a href="/users/register">Register</a>
+
+            <button type="submit">Login</button>
+        </form>
+        
+        </div>
+
+    </div>
+
+        
+</body>
+</html>
