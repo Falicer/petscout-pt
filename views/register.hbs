@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Matching App</title>
+        <meta name="Matching App" content="Matching site">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    </head>
+<body>
+     <header>
+
+    </header>
+
+    <div class="split left"> 
+        <img class="banner" src="../images/foto banner .jpeg">
+    </div>
+
+    <div class="split right">
+{{>navigation}}
+    
+        <div class="centered">
+
+        <h1>Registreren</h1>
+
+        <!-- Dit moet omgezet worden naar handlebars -->
+        <!-- error als het gelijk is aan undefined -->
+        {{!-- <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
+          <%= error.msg %>
+        <% }); %> --}}
+        
+        {{#if success_msg}}
+        {{success_msg}}
+        {{/if}}
+
+        {{#if error_msg}}
+        {{error_msg}}
+        {{/if}}
+
+        {{#if error}}
+        {{error}}
+        {{/if}}
+
+
+        <h5>Heeft u al een account? <a href="/login">Login</a> </h5>
+
+        <form action="/register" method="POST">
+          <label for="username">Name</label>
+          <input
+            type="username"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="Enter Name"
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Create Password"
+          />
+
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Confirm Password"
+          />
+
+          <label for="pet">Pick your pet:</label>
+          <select id="pet" name="pet" list="petFlavors">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="bird">Bird</option>
+            <option value="bunny">Bunny</option>
+            <option value="hamster">Hamster</option>
+          </select>
+
+            <button type="submit">Registreren</button>
+            
+        </form>
+        
+        </div>
+
+    </div>
+
+        
+</body>
+</html>
