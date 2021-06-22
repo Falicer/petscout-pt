@@ -350,7 +350,7 @@ router.post('/register', (req, res) => {
     }
 
     if (errors.length > 0) { // so credentials stay in form when you get an error
-        res.render('/register', {
+        res.get('/register', {
             errors,
             username,
             email,
@@ -369,7 +369,7 @@ router.post('/register', (req, res) => {
                     errors.push({
                         msg: 'Email is already registered'
                     });
-                    res.render('/register', {
+                    res.get('/register', {
                         errors,
                         username,
                         email,
